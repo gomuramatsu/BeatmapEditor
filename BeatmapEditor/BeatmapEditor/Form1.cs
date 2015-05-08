@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace BeatmapEditor
 {
@@ -79,7 +80,7 @@ namespace BeatmapEditor
         private void start_Click(object sender, EventArgs e)
         {
             createDiff();
-            MessageBox.Show("New difficulty created: " + version + "\nCS: " + cs.ToString() + " AR: " + ar.ToString() + " OD: " + od.ToString() + " HP: " + hp.ToString());
+            MessageBox.Show("New difficulty created: " + version);
 
         }
 
@@ -101,6 +102,16 @@ namespace BeatmapEditor
             }
 
             //Open and change stuff on outputF
+
+            File.WriteAllText(outputF, Regex.Replace(File.ReadAllText(outputF), "Version:.*", "Version:" + version + " \n"));
+            if (hp != -1)
+                File.WriteAllText(outputF, Regex.Replace(File.ReadAllText(outputF), "HPDrainRate:.*", "HPDrainRate:" + hp + " \n"));
+            if (cs != -1)
+                File.WriteAllText(outputF, Regex.Replace(File.ReadAllText(outputF), "CircleSize:.*", "CircleSize:" + cs + " \n"));
+            if (od != -1)
+                File.WriteAllText(outputF, Regex.Replace(File.ReadAllText(outputF), "OverallDifficulty:.*", "OverallDifficulty:" + od + " \n"));
+            if (ar != -1)
+                File.WriteAllText(outputF, Regex.Replace(File.ReadAllText(outputF), "ApproachRate:.*", "ApproachRate:" + ar + " \n"));
         }
 
         private void browse_Click(object sender, EventArgs e)
