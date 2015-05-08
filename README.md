@@ -10,3 +10,11 @@ I basically made this for myself so I can create AR10 practice maps but I hope s
 - OverallDifficulty
 - ApproachRate
 
+
+![alt text](https://raw.githubusercontent.com/gomuramatsu/BeatmapEditor/master/example1.jpg "Before")
+
+![alt text](https://raw.githubusercontent.com/gomuramatsu/BeatmapEditor/master/example2.png "Settings")
+Note: Leaving the difficulty parameters blank will keep the original metadata. 
+
+![alt text](https://raw.githubusercontent.com/gomuramatsu/BeatmapEditor/master/example3.jpg "After")
+
