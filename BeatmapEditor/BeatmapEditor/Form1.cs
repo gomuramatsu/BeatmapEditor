@@ -87,6 +87,20 @@ namespace BeatmapEditor
         private void createDiff()
         {
             //open and copy difficulty and make modifications
+            try
+            {
+                // Will not overwrite if the destination file already exists.
+                outputF = System.IO.Path.ChangeExtension(inputF, null) +"[" +  version + "]" + ".OSU";
+                File.Copy(inputF, outputF);
+            }
+
+            // Catch exception if the file was already copied. 
+            catch (IOException copyError)
+            {
+                Console.WriteLine(copyError.Message);
+            }
+
+            //Open and change stuff on outputF
         }
 
         private void browse_Click(object sender, EventArgs e)
