@@ -41,6 +41,7 @@
             this.csInput = new System.Windows.Forms.TextBox();
             this.start = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.mapList = new System.Windows.Forms.ListBox();
             this.filePath = new System.Windows.Forms.Label();
             this.browse = new System.Windows.Forms.Button();
             this.metadata.SuspendLayout();
@@ -59,7 +60,7 @@
             this.metadata.Controls.Add(this.arInput);
             this.metadata.Controls.Add(this.odInput);
             this.metadata.Controls.Add(this.csInput);
-            this.metadata.Location = new System.Drawing.Point(23, 103);
+            this.metadata.Location = new System.Drawing.Point(23, 212);
             this.metadata.Name = "metadata";
             this.metadata.Size = new System.Drawing.Size(312, 135);
             this.metadata.TabIndex = 0;
@@ -153,7 +154,7 @@
             // 
             // start
             // 
-            this.start.Location = new System.Drawing.Point(121, 255);
+            this.start.Location = new System.Drawing.Point(121, 353);
             this.start.Name = "start";
             this.start.Size = new System.Drawing.Size(116, 23);
             this.start.TabIndex = 0;
@@ -163,14 +164,23 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.mapList);
             this.groupBox1.Controls.Add(this.filePath);
             this.groupBox1.Controls.Add(this.browse);
             this.groupBox1.Location = new System.Drawing.Point(23, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(312, 84);
+            this.groupBox1.Size = new System.Drawing.Size(312, 193);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Directory";
+            this.groupBox1.Text = "Beatmaps";
+            // 
+            // mapList
+            // 
+            this.mapList.FormattingEnabled = true;
+            this.mapList.Location = new System.Drawing.Point(37, 57);
+            this.mapList.Name = "mapList";
+            this.mapList.Size = new System.Drawing.Size(238, 108);
+            this.mapList.TabIndex = 2;
             // 
             // filePath
             // 
@@ -182,11 +192,11 @@
             // 
             // browse
             // 
-            this.browse.Location = new System.Drawing.Point(98, 52);
+            this.browse.Location = new System.Drawing.Point(98, 16);
             this.browse.Name = "browse";
             this.browse.Size = new System.Drawing.Size(116, 26);
             this.browse.TabIndex = 0;
-            this.browse.Text = "Browse Directory";
+            this.browse.Text = "Select Beatmaps";
             this.browse.UseVisualStyleBackColor = true;
             this.browse.Click += new System.EventHandler(this.browse_Click);
             // 
@@ -194,7 +204,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(364, 299);
+            this.ClientSize = new System.Drawing.Size(364, 407);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.metadata);
             this.Controls.Add(this.start);
@@ -225,6 +235,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button browse;
         private System.Windows.Forms.Label filePath;
+        private System.Windows.Forms.ListBox mapList;
     }
 }
 

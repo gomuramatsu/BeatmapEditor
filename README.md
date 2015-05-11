@@ -1,7 +1,7 @@
 # BeatmapEditor
-A fast and easy way to edit existing beatmaps. Just select a song(s) and edit metadata. 
+A fast and easy way to edit multiple existing beatmaps. Just select a song(s) and edit metadata. 
 
-I basically made this for myself so I can create AR10 practice maps in large batches but I hope some of you find this useful. 
+I basically made this so I can create AR10 practice maps in large batches fast. I hope some of you find this useful. 
 
 ###Metadata available for editing:
 - Version
@@ -12,13 +12,13 @@ I basically made this for myself so I can create AR10 practice maps in large bat
 
 
 
-Example: Creating an AR10 version of Halozy - Kanshou no Matenrou
+Example: Creating an AR10 version of Ryu - Sakura Mirage [ULTRA] and xi - FREEDOM DiVE[FOUR DIMENSIONS]
 
 ![alt text](https://raw.githubusercontent.com/gomuramatsu/BeatmapEditor/master/example1.jpg "Before")
 
-![alt text](https://raw.githubusercontent.com/gomuramatsu/BeatmapEditor/master/example2.png "Settings")
+![alt text](https://raw.githubusercontent.com/gomuramatsu/BeatmapEditor/master/example2.jpg "Settings")
 
-Select original beatmap, choose a difficulty name and change parameters.
+Select original beatmap(s), choose a difficulty name and change difficulty metadata.
 
 Note: Leaving the difficulty parameters blank will keep the original metadata. 
 

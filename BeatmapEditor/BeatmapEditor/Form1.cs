@@ -26,6 +26,7 @@ namespace BeatmapEditor
         string version = "";
         string inputF = "";
         string outputF = "";
+        List<string> inputFArr = new List<string>(); 
 
         //version Input
         private void versionInput_TextChanged(object sender, EventArgs e)
@@ -79,20 +80,24 @@ namespace BeatmapEditor
         //Create Beatmap
         private void start_Click(object sender, EventArgs e)
         {
-            createDiff();
+            for (var i = 0; i < inputFArr.Count; i++ )
+            {
+                createDiff(inputFArr[i]);
+
+            }
             MessageBox.Show("New difficulty created: " + version);
 
         }
 
 
-        private void createDiff()
+        private void createDiff(string mapPath)
         {
             //open and copy difficulty and make modifications
             try
             {
                 // Will not overwrite if the destination file already exists.
-                outputF = System.IO.Path.ChangeExtension(inputF, null) +"[" +  version + "]" + ".OSU";
-                File.Copy(inputF, outputF);
+                outputF = System.IO.Path.ChangeExtension(mapPath, null) +"[" +  version + "]" + ".OSU";
+                File.Copy(mapPath, outputF);
             }
 
             // Catch exception if the file was already copied. 
@@ -100,10 +105,10 @@ namespace BeatmapEditor
             {
                 Console.WriteLine(copyError.Message);
             }
-
+            
             //Open and change stuff on outputF
 
-            File.WriteAllText(outputF, Regex.Replace(File.ReadAllText(outputF), "Version:.*", "Version:" + version + " \n"));
+            File.WriteAllText(outputF, Regex.Replace(File.ReadAllText(outputF), "Version:.*", "Version:" + version + "\n"));
             if (hp != -1)
                 File.WriteAllText(outputF, Regex.Replace(File.ReadAllText(outputF), "HPDrainRate:.*", "HPDrainRate:" + hp + " \n"));
             if (cs != -1)
@@ -111,9 +116,9 @@ namespace BeatmapEditor
             if (od != -1)
                 File.WriteAllText(outputF, Regex.Replace(File.ReadAllText(outputF), "OverallDifficulty:.*", "OverallDifficulty:" + od + " \n"));
             if (ar != -1)
-                File.WriteAllText(outputF, Regex.Replace(File.ReadAllText(outputF), "ApproachRate:.*", "ApproachRate:" + ar + " \n"));
+                File.WriteAllText(outputF, Regex.Replace(File.ReadAllText(outputF), "ApproachRate:.*", "ApproachRate:" + ar + "\n"));
         }
-
+        /*
         private void browse_Click(object sender, EventArgs e)
         {
             Stream myStream = null;
@@ -127,6 +132,31 @@ namespace BeatmapEditor
             }
 
         }
+         */
+        private void browse_Click(object sender, EventArgs e)
+        {
+            
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "osu files (*.osu)|*.osu";
+            openFileDialog1.Multiselect = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string tempFolder = System.IO.Path.GetTempPath();
+                foreach (string fileName in openFileDialog1.FileNames)
+                {
+                    inputFArr.Add(fileName);
+                    //filePath.Text = filePath.Text + "\n" + fileName;
+                    mapList.Items.Add(filePath.Text + "\n" + Path.GetFileNameWithoutExtension(fileName));
+                    
+                }
+                //inputF = openFileDialog1.FileName;
+                //filePath.Text = inputF;
+            }
+
+        }
+
+
 
     }
 }
